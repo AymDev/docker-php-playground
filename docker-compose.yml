@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+    app:
+        build:
+            dockerfile: ./Dockerfile
+            context: ./
+        container_name: app
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ./app:/var/www/html
