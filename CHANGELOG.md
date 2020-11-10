@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2020-10-10
+## [1.0.0] - 2020-11-10
 ### Added
 - `app` container with **PHP** 7.4 with extensions (*exif, gd, imagick, intl, pdo_mysql, pdo_pgsql, xdebug, xsl, zip*) & **Apache**
 - **MySQL** and **PhpMyAdmin** services
