@@ -1,13 +1,44 @@
 version: "3.7"
 
+volumes:
+    mysql-data:
+
+networks:
+    app-net:
+        driver: bridge
+
 services:
     app:
         build:
             dockerfile: ./Dockerfile
             context: ./
         container_name: app
+        networks:
+            - app-net
         ports:
             - 80:80
             - 443:443
         volumes:
             - ./app:/var/www/html
+
+    mysql:
+        image: mysql:5.7
+        container_name: docker-php-playground-db
+        networks:
+            - app-net
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        volumes:
+            - mysql-data:/var/lib/mysql
+
+    admin:
+        image: "phpmyadmin/phpmyadmin:latest"
+        container_name: docker-php-playground-pma
+        networks:
+            - app-net
+        ports:
+            - 8888:80
+        environment:
+            - PMA_HOST=docker-php-playground-db
